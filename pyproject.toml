@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-a11y-remediator"
+version = "0.1.0"
+description = "Offline PDF remediation tool: extract images, generate alt text with BLIP, inject WCAG metadata."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name="William Belz", email="wkbelz@gmail.com" }
+]
+license = { text = "MIT" }
+keywords = ["PDF", "accessibility", "WCAG", "AI", "remediation"]
+
+dependencies = [
+  "pikepdf>=7.2",
+  "pdfplumber>=0.10",
+  "click>=8.1",
+  "pillow>=10.0",
+  "torch>=2.2,<3.0",
+  "torchvision>=0.17,<1.0",
+  "transformers>=4.41",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "isort",
+  "pytest",
+  "pytest-cov",
+  "pre-commit",
+]
+
+[project.scripts]
+pdf-a11y = "scripts.cli:remediate"
